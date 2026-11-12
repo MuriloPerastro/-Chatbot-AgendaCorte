@@ -4,7 +4,7 @@ import sys
 # Adiciona a raiz do projeto ao path do Python para encontrar a pasta 'src'
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from src.database import supabase
+from src.backend.database import supabase
 
 
 def testar_conexao_completa():
