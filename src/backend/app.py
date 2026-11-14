@@ -9,12 +9,12 @@ from .routes.agendamento_routes import agendamento_bp
 from .routes.agendamentos_routes_agenda import agenda_bp
 
 
-# Caminho da pasta src.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# Caminho da raiz do projeto.
+BASE_DIR = Path(__file__).resolve().parents[2]
 
-# Pastas do projeto.
-FRONTEND_DIR = BASE_DIR / "frontend"
-ASSETS_DIR = BASE_DIR / "assets"
+# Pastas do frontend e das imagens.
+FRONTEND_DIR = BASE_DIR / "public"
+ASSETS_DIR = FRONTEND_DIR / "assets"
 
 
 # Inicialização do Flask.
@@ -43,7 +43,7 @@ def assets(filename):
     return send_from_directory(ASSETS_DIR, filename)
 
 
-# Verificação do servidor.
+# Verifica se o servidor está funcionando.
 @app.route("/api/status", methods=["GET"])
 def status():
     return jsonify({
@@ -53,6 +53,7 @@ def status():
     })
 
 
+# Inicialização local.
 if __name__ == "__main__":
     app.run(
         host="0.0.0.0",
