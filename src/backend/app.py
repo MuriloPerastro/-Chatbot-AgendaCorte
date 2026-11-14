@@ -5,7 +5,7 @@ from flask import Flask, jsonify, send_from_directory
 
 from .database import supabase
 from .routes.agendamento_routes import agendamento_bp
-
+from .routes.agendamentos_routes_agenda import agenda_bp
 # Localização das pastas
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,6 +22,7 @@ app = Flask(
 
 app.register_blueprint(chat_bp)
 app.register_blueprint(agendamento_bp)
+app.register_blueprint(agenda_bp)
 # Página inicial
 @app.route("/")
 def index():

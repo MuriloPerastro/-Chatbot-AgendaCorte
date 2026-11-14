@@ -5,6 +5,7 @@ from datetime import datetime, date
 from flask import Blueprint, jsonify, request
 from ..database import supabase
 
+from datetime import datetime, date, timedelta
 
 chat_bp = Blueprint("chat", __name__, url_prefix="/api/chat")
 
@@ -411,18 +412,53 @@ def responder():
                     "etapa": "agendamento_profissional",
                     "opcoes": []
                 }), 404
+            
+            nomes_profissionais = {
+                1: "Rodrigo",
+                2: "Cleber",
+                3: "Carina"
+            }
+
+            nome_profissional = nomes_profissionais.get(
+                profissional_id,
+                "Profissional"
+            )
+
+            # Gerar as próximas 10 datas de atendimento.
+            datas_disponiveis = []
+            data_atual = date.today()
+
+            while len(datas_disponiveis) < 10:
+                if data_atual.weekday() < 5:
+                    datas_disponiveis.append({
+                        "id": f"data_{data_atual.isoformat()}",
+                        "texto": data_atual.strftime("%d/%m/%Y")
+                    })
+
+                data_atual += timedelta(days=1)
+
+            nomes_profissionais = {
+                1: "Rodrigo",
+                2: "Cleber",
+                3: "Carina"
+            }
+
+            nome_profissional = nomes_profissionais.get(
+                profissional_id,
+                "Profissional"
+            )
 
             return jsonify({
                 "mensagem": (
-                    f"Você escolheu {profissional.data[0]['nome']}. "
-                    "Agora vamos escolher a data do atendimento."
+                    f"Você escolheu {nome_profissional}! "
+                    "Agora escolha a data do atendimento."
                 ),
                 "cliente_id": cliente_id,
                 "servico_id": servico_id,
                 "profissional_id": profissional_id,
                 "tipo_cabelo": dados.get("tipo_cabelo"),
                 "etapa": "agendamento_data",
-                "opcoes": []
+                "opcoes": datas_disponiveis
             })
 
         except Exception as erro:
