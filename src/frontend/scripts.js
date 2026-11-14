@@ -62,7 +62,7 @@ function mostrarDigitando() {
     indicador.id = "indicador-digitando";
 
     const avatar = document.createElement("img");
-    avatar.src = "/assets/icone-app.jpg";
+    avatar.src = "./assets/Icone-app.jpg";
     avatar.alt = "AgendaCorte";
     avatar.classList.add("bot-avatar");
 
@@ -115,7 +115,7 @@ function adicionarMensagem(texto, tipo = "bot") {
     if (tipo === "bot") {
         const avatar = document.createElement("img");
 
-        avatar.src = "/assets/icone-app.jpg";
+        avatar.src = "./assets/Icone-app.jpg";
         avatar.alt = "AgendaCorte";
         avatar.classList.add("bot-avatar");
 

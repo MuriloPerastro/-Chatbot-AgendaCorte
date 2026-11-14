@@ -2,6 +2,9 @@
 __pycache__/
 *.pyc
 
+tests/
+tests/test_conexao.py
+
 .vscode/
 Thumbs.db
 ehthumbs.db
@@ -9,8 +12,11 @@ Desktop.ini
 $RECYCLE.BIN/
 .DS_Store
 
+.venv
+
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+
