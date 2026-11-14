@@ -1,4 +1,6 @@
-/* Reseta margens e define a fonte Inter */
+
+/* RESET */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,36 +8,52 @@
     font-family: 'Inter', sans-serif;
 }
 
-/* Fundo geral escuro da tela */
+
+/* FUNDO */
+
 body {
     background-color: #0d0f12;
     color: #e1e1e6;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
+    min-height: 100vh;
 }
 
-/* Estrutura principal da janela do chat */
+
+/* ESTRUTURA PRINCIPAL */
+
 .chat-wrapper {
     width: 100%;
     max-width: 750px;
     height: 92vh;
+
     background: #13151a;
+
     border-radius: 16px;
     border: 1px solid #22262e;
+
     display: flex;
     flex-direction: column;
+
     overflow: hidden;
+
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
-/* Cabeçalho superior */
+
+/* CABEÇALHO */
+
 .app-header {
     padding: 16px 24px;
+
     border-bottom: 1px solid #22262e;
+
     display: flex;
     align-items: center;
+
     background: #13151a;
 }
 
@@ -51,59 +69,111 @@ body {
     color: #f1f1f3;
 }
 
-/* Badge "IA v2.4" */
+
+/* IDENTIFICAÇÃO DO CHATBOT */
+
 .badge-ia {
     background: linear-gradient(135deg, #7c3aed, #db2777);
+
     color: #fff;
+
     font-size: 0.7rem;
-    padding: 2px 8px;
+    padding: 4px 8px;
+
     border-radius: 6px;
+
     font-weight: 500;
 }
 
-/* Container do chat */
+
+/* CONTAINER DO CHAT */
+
 .chat-container {
     flex: 1;
+
     display: flex;
     flex-direction: column;
+
     overflow: hidden;
+    min-height: 0;
 }
 
-/* Área de mensagens */
+
+/* ÁREA DE MENSAGENS */
+
 .chat-messages {
     flex: 1;
+
     padding: 20px 24px;
+
     overflow-y: auto;
+
     display: flex;
     flex-direction: column;
+
     gap: 18px;
 }
 
-/* Linha de mensagem do bot com avatar */
+
+/* LINHA DE MENSAGEM */
+
 .message-row {
     display: flex;
+    align-items: flex-start;
+
     gap: 12px;
+
     max-width: 85%;
 }
+
+.bot-row {
+    align-self: flex-start;
+}
+
+.user-row {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+
+/* AVATAR DO BOT */
 
 .bot-avatar {
     width: 32px;
     height: 32px;
+
     background: linear-gradient(135deg, #ff416c, #ff4b2b);
+
     border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     font-size: 0.9rem;
+
     flex-shrink: 0;
+
     box-shadow: 0 2px 8px rgba(255, 65, 108, 0.3);
 }
+
+
+/* CONTEÚDO DA MENSAGEM */
 
 .message-content {
     display: flex;
     flex-direction: column;
+
     gap: 4px;
+    min-width: 0;
 }
+
+.user-row .message-content {
+    align-items: flex-end;
+}
+
+
+/* IDENTIFICAÇÃO DO REMETENTE */
 
 .sender-info {
     font-size: 0.75rem;
@@ -114,75 +184,117 @@ body {
     margin-left: 4px;
 }
 
-/* Balão de mensagem escuro do bot */
+
+/* BALÕES */
+
+.message {
+    padding: 12px 16px;
+
+    border-radius: 12px;
+
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
 .message.bot {
     background: #1b1f28;
     color: #e1e1e6;
-    padding: 12px 16px;
-    border-radius: 12px;
+
     border: 1px solid #2a303c;
-    font-size: 0.9rem;
-    line-height: 1.5;
+
+    border-top-left-radius: 3px;
 }
 
-/* Cartão especial de segurança ou agendamento */
+.message.user {
+    background: #2b313d;
+    color: #fff;
+
+    border-top-right-radius: 3px;
+}
+
+
+/* CARD DE SEGURANÇA */
+
 .security-card {
     border-left: 3px solid #f59e0b;
 }
 
-/* Balão do usuário (alinhado à direita) */
-.message.user {
-    background: #2b313d;
-    color: #fff;
-    padding: 10px 16px;
-    border-radius: 12px;
-    align-self: flex-end;
-    font-size: 0.9rem;
-}
 
-/* Área de botões interativos */
+/* BOTÕES DE RESPOSTA */
+
 .chat-buttons {
     padding: 10px 24px;
+
     display: flex;
     flex-wrap: wrap;
+
     gap: 8px;
+
     background: #13151a;
 }
 
 .chat-buttons button {
     background: #1b1f28;
+
     border: 1px solid #2a303c;
+
     color: #c9d1d9;
+
     padding: 8px 16px;
+
     border-radius: 8px;
+
     cursor: pointer;
+
     font-size: 0.85rem;
-    transition: 0.2s;
+
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 
 .chat-buttons button:hover {
     background: #7c3aed;
     border-color: #7c3aed;
+
     color: #fff;
 }
 
-/* Barra inferior de input */
+.chat-buttons button:focus-visible,
+.chat-input-area button:focus-visible {
+    outline: 2px solid #a78bfa;
+    outline-offset: 3px;
+}
+
+
+/* CAMPO DE MENSAGEM */
+
 .chat-input-area {
     margin: 16px 24px;
+
     background: #1b1f28;
+
     border: 1px solid #2a303c;
     border-radius: 30px;
+
     display: flex;
     align-items: center;
+
     padding: 6px 6px 6px 18px;
 }
 
 .chat-input-area input {
     flex: 1;
+
+    min-width: 0;
+
     background: transparent;
     border: none;
+
     color: #fff;
+
     font-size: 0.9rem;
+
     outline: none;
 }
 
@@ -190,21 +302,141 @@ body {
     color: #6e7681;
 }
 
-/* Botão de envio redondo com ícone roxo */
+
+/* BOTÃO ENVIAR */
+
 .chat-input-area button {
     background: #8b5cf6;
+
     color: white;
+
     border: none;
+
     width: 36px;
     height: 36px;
+
     border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     cursor: pointer;
+
     transition: background 0.2s;
 }
 
 .chat-input-area button:hover {
     background: #7c3aed;
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 600px) {
+
+    body {
+        min-height: 100dvh;
+        align-items: stretch;
+    }
+
+    .chat-wrapper {
+        width: 100%;
+        height: 100dvh;
+
+        max-width: none;
+
+        border-radius: 0;
+        border: none;
+    }
+
+    .app-header {
+        padding: 16px;
+    }
+
+    .header-title {
+        flex-wrap: wrap;
+    }
+
+    .chat-messages {
+        padding: 16px;
+    }
+
+    .message-row {
+        max-width: 95%;
+    }
+
+    .chat-buttons {
+        padding: 10px 16px;
+    }
+
+    .chat-input-area {
+        margin: 12px 16px;
+    }
+
+}
+
+.bot-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.bot-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+
+/* ÁREA DOS PROFISSIONAIS */
+.profissionais-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* CARTÃO INDIVIDUAL */
+.profissional-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    width: 150px;
+    padding: 12px;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+
+    background: white;
+    cursor: pointer;
+
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.profissional-card:hover {
+    transform: translateY(-4px);
+    border-color: #8b5cf6;
+}
+
+/* FOTO */
+.profissional-imagem {
+    width: 110px;
+    height: 110px;
+
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* NOME */
+.profissional-nome {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
 }
