@@ -1,3 +1,4 @@
+
 from pathlib import Path
 
 from flask import Flask, jsonify, send_from_directory
@@ -8,12 +9,12 @@ from .routes.agendamento_routes import agendamento_bp
 from .routes.agendamentos_routes_agenda import agenda_bp
 
 
-# Caminho da raiz do projeto.
-BASE_DIR = Path(__file__).resolve().parents[2]
+# Caminho da pasta src.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Mantém os nomes antigos, mas utiliza as pastas novas.
-FRONTEND_DIR = BASE_DIR / "public"
-ASSETS_DIR = FRONTEND_DIR / "assets"
+# Pastas do projeto.
+FRONTEND_DIR = BASE_DIR / "frontend"
+ASSETS_DIR = BASE_DIR / "assets"
 
 
 # Inicialização do Flask.
@@ -30,16 +31,19 @@ app.register_blueprint(agendamento_bp)
 app.register_blueprint(agenda_bp)
 
 
+# Página inicial.
 @app.route("/")
 def index():
     return send_from_directory(FRONTEND_DIR, "index.html")
 
 
+# Disponibiliza imagens.
 @app.route("/assets/<path:filename>")
 def assets(filename):
     return send_from_directory(ASSETS_DIR, filename)
 
 
+# Verificação do servidor.
 @app.route("/api/status", methods=["GET"])
 def status():
     return jsonify({
