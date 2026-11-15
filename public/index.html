@@ -1,13 +1,16 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="icon" type="image/png" href="/assets/CortesLabs.png">
+
     <title>AgendaCorte Assistant</title>
-    <link rel="icon" type="image/png" href="/assets/CortesLabs.png">
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +22,7 @@
 </head>
 
 <body>
+
     <div class="chat-wrapper">
 
         <!-- Cabeçalho -->
@@ -48,15 +52,14 @@
                 aria-label="Conversa com o assistente"
             >
 
-                <!-- Exemplo de Indicador de Digitação direto no HTML (você pode controlar via JS se exibe ou oculta) -->
-                <div class="message bot-message typing-message" id="typing-indicator">
-                    <div class="message-content typing-bubble">
-                        <div class="dots-container">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                        </div>
-                    </div>
+                <!-- Indicador de digitação do bot -->
+                <div
+                    class="message bot-message typing-message"
+                    id="typing-indicator"
+                    style="display: none;"
+                >
+
+
                 </div>
 
             </div>
@@ -113,7 +116,8 @@
 
 
     <!-- JavaScript -->
-    <script src="scripts.js" defer></script>
+    <script src="/scripts.js" defer></script>
+
 </body>
 
 </html>

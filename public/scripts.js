@@ -8,6 +8,7 @@ const mensagens = document.getElementById("chat-messages");
 const botoes = document.getElementById("chat-buttons");
 const formulario = document.getElementById("chat-form");
 const campoTexto = document.getElementById("user-input");
+const indicador = document.getElementById("typing-indicator");
 
 
 
@@ -49,49 +50,23 @@ if (clienteId) {
 let inicioDigitacao = 0;
 
 // Mostra os três pontinhos animados.
+// Mostra as três bolinhas do HTML.
 function mostrarDigitando() {
-    if (!mensagens) return;
-
-    // Evita criar indicadores duplicados.
-    removerDigitando();
+    if (!indicador) return;
 
     inicioDigitacao = Date.now();
 
-    const indicador = document.createElement("div");
-    indicador.classList.add("typing-message");
-    indicador.id = "indicador-digitando";
+    indicador.style.display = "flex";
 
-    const avatar = document.createElement("img");
-    avatar.src = "./assets/Icone-app.jpg";
-    avatar.alt = "AgendaCorte";
-    avatar.classList.add("bot-avatar");
-
-    const bolha = document.createElement("div");
-    bolha.classList.add("typing-bubble");
-
-    // Cria os três pontinhos.
-    for (let i = 0; i < 3; i++) {
-        const ponto = document.createElement("span");
-        ponto.classList.add("typing-dot");
-        bolha.appendChild(ponto);
-    }
-
-    indicador.appendChild(avatar);
-    indicador.appendChild(bolha);
-
-    mensagens.appendChild(indicador);
     mensagens.scrollTop = mensagens.scrollHeight;
 }
 
 // Remove os pontinhos.
+// Esconde as três bolinhas.
 function removerDigitando() {
-    const indicador = document.getElementById(
-        "indicador-digitando"
-    );
+    if (!indicador) return;
 
-    if (indicador) {
-        indicador.remove();
-    }
+    indicador.style.display = "none";
 }
 
 
