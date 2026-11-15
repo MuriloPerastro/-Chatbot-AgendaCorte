@@ -1,0 +1,605 @@
+
+/* =========================================
+   CONFIGURAÇÕES GERAIS
+========================================= */
+
+:root {
+    --background: #101014;
+    --surface: #19191f;
+    --surface-light: #22222a;
+    --border: #30303a;
+
+    --text: #f4f4f5;
+    --text-muted: #9999a6;
+
+    --primary: #a78bfa;
+    --primary-hover: #8b5cf6;
+
+    --success: #4ade80;
+    --warning: #facc15;
+    --danger: #f87171;
+
+    --radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================
+   ESTRUTURA PRINCIPAL
+========================================= */
+
+.admin-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 35px 24px;
+}
+
+.login-section,
+.dashboard-section {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+.login-section {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 410px;
+    padding: 38px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    text-align: center;
+}
+
+.admin-logo {
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+    margin-bottom: 22px;
+}
+
+.login-card h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.login-card > p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 28px;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 12px;
+}
+
+#login-form label {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#admin-password {
+    width: 100%;
+    padding: 14px;
+    color: var(--text);
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#admin-password:focus {
+    border-color: var(--primary);
+}
+
+#login-button {
+    padding: 14px;
+    margin-top: 5px;
+    color: #fff;
+    background: var(--primary-hover);
+    border: none;
+    border-radius: 9px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+#login-button:hover {
+    background: var(--primary);
+}
+
+#login-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 38px;
+}
+
+.system-label {
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.header-info h1 {
+    font-size: 28px;
+    margin: 8px 0;
+}
+
+.header-info p {
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.logout-button {
+    padding: 11px 18px;
+    color: var(--danger);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.logout-button:hover {
+    background: rgba(248, 113, 113, 0.1);
+    border-color: var(--danger);
+}
+
+
+/* =========================================
+   NAVEGAÇÃO DA SEMANA
+========================================= */
+
+.week-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 22px;
+    margin-bottom: 20px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.week-navigation h2 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.week-navigation p {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.week-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.week-buttons button {
+    min-width: 40px;
+    height: 38px;
+    padding: 0 12px;
+
+    color: var(--text);
+    background: var(--surface-light);
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    transition: 0.2s;
+}
+
+.week-buttons button:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.week-buttons button:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+
+/* =========================================
+   RESUMO
+========================================= */
+
+.summary-section {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 22px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.summary-card span {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.summary-card strong {
+    font-size: 30px;
+}
+
+
+/* =========================================
+   LISTA DE AGENDAMENTOS
+========================================= */
+
+.appointments-section {
+    margin-bottom: 30px;
+}
+
+.appointments-header {
+    margin-bottom: 18px;
+}
+
+.appointments-header h2 {
+    font-size: 19px;
+}
+
+.professional-card {
+    margin-bottom: 24px;
+    overflow: hidden;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.professional-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 20px;
+
+    background: var(--surface-light);
+    border-bottom: 1px solid var(--border);
+}
+
+.professional-header h3 {
+    font-size: 17px;
+}
+
+.professional-count {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.professional-content {
+    padding: 8px 20px;
+}
+
+.day-group {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.day-group:last-child {
+    border-bottom: none;
+}
+
+.day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.day-header h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+.day-date {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.appointment-item {
+    display: grid;
+    grid-template-columns: 85px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 15px;
+
+    padding: 15px;
+    margin-bottom: 9px;
+
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+}
+
+.appointment-item:last-child {
+    margin-bottom: 0;
+}
+
+.appointment-time {
+    font-size: 17px;
+    font-weight: bold;
+    color: var(--primary);
+    white-space: nowrap;
+}
+
+.appointment-info {
+    min-width: 0;
+}
+
+.appointment-client {
+    font-size: 14px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.appointment-service {
+    margin-top: 5px;
+    color: var(--text-muted);
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+
+.appointment-status {
+    padding: 6px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.status-default {
+    color: var(--primary);
+    background: rgba(167, 139, 250, 0.12);
+}
+
+.status-confirmed {
+    color: var(--success);
+    background: rgba(74, 222, 128, 0.12);
+}
+
+.status-pending {
+    color: var(--warning);
+    background: rgba(250, 204, 21, 0.12);
+}
+
+.status-cancelled {
+    color: var(--danger);
+    background: rgba(248, 113, 113, 0.12);
+}
+
+.status-completed {
+    color: var(--success);
+    background: rgba(74, 222, 128, 0.12);
+}
+
+.empty-message,
+.loading-message {
+    padding: 25px 15px;
+    color: var(--text-muted);
+    text-align: center;
+    font-size: 13px;
+}
+
+.error-message {
+    min-height: 18px;
+    color: var(--danger);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.login-card .error-message {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.dashboard-section > .error-message {
+    margin-top: 15px;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 650px) {
+
+    .admin-container {
+        padding: 20px 13px;
+    }
+
+    .login-section {
+        min-height: calc(100vh - 40px);
+    }
+
+    .login-card {
+        padding: 28px 20px;
+    }
+
+    .dashboard-header {
+        align-items: flex-start;
+    }
+
+    .header-info h1 {
+        font-size: 22px;
+    }
+
+    .header-info p {
+        font-size: 12px;
+    }
+
+    .logout-button {
+        padding: 9px 12px;
+    }
+
+    .week-navigation {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 17px;
+    }
+
+    .week-buttons {
+        width: 100%;
+    }
+
+    .week-buttons button {
+        flex: 1;
+    }
+
+    .summary-section {
+        gap: 9px;
+    }
+
+    .summary-card {
+        padding: 16px;
+    }
+
+    .summary-card span {
+        font-size: 11px;
+    }
+
+    .summary-card strong {
+        font-size: 25px;
+    }
+
+    .professional-header {
+        padding: 16px;
+    }
+
+    .professional-content {
+        padding: 5px 12px;
+    }
+
+    .appointment-item {
+        grid-template-columns: 65px minmax(0, 1fr);
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .appointment-time {
+        font-size: 15px;
+    }
+
+    .appointment-status {
+        grid-column: 2;
+        justify-self: start;
+    }
+}
+/* =========================================
+   AÇÕES DO AGENDAMENTO
+========================================= */
+
+.appointment-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.delete-appointment-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    color: var(--danger);
+    background: transparent;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    font-size: 16px;
+
+    transition: 0.2s;
+}
+
+.delete-appointment-button:hover {
+    background: rgba(248, 113, 113, 0.12);
+    border-color: var(--danger);
+}
+
+.delete-appointment-button:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+@media (max-width: 650px) {
+    .appointment-actions {
+        grid-column: 2;
+        justify-content: flex-start;
+    }
+}

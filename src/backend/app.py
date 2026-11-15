@@ -1,4 +1,7 @@
+import os
+from datetime import timedelta
 
+from .routes.admin_routes import admin_bp
 from pathlib import Path
 
 from flask import Flask, jsonify, send_from_directory
@@ -23,12 +26,24 @@ app = Flask(
     static_folder=str(FRONTEND_DIR),
     static_url_path=""
 )
+# Configuração de segurança das sessões administrativas.
+app.secret_key = os.getenv("SECRET_KEY")
 
+if not app.secret_key:
+    raise ValueError("Configure SECRET_KEY nas variáveis de ambiente.")
+
+app.config.update(
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE="Lax",
+    SESSION_COOKIE_SECURE=os.getenv("VERCEL") == "1",
+    PERMANENT_SESSION_LIFETIME=timedelta(hours=8)
+)
 
 # Registro das rotas.
 app.register_blueprint(chat_bp)
 app.register_blueprint(agendamento_bp)
 app.register_blueprint(agenda_bp)
+app.register_blueprint(admin_bp)
 
 
 # Página inicial.
